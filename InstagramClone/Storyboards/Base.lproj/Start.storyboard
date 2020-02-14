@@ -133,7 +133,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rh1-gI-Qnq">
                                         <rect key="frame" x="0.0" y="159" width="374" height="40"/>
@@ -145,7 +145,7 @@
                                             <color key="titleColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="ZUM-rm-XiN" kind="presentation" id="icF-XG-qCY"/>
+                                            <action selector="signUpBtn_tapped:" destination="0SD-sT-aIh" eventType="touchUpInside" id="MYb-Qt-dpx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -203,7 +203,4 @@
     <resources>
         <image name="placeholderImg" width="225" height="225"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="icF-XG-qCY"/>
-    </inferredMetricsTieBreakers>
 </document>
