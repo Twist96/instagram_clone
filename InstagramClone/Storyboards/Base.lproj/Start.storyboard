@@ -13,7 +13,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="InstagramClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" id="BYZ-38-t0r" customClass="SignInViewController" customModule="InstagramClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
                                             <color key="titleColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="ZUM-rm-XiN" kind="presentation" id="XoB-qP-EoE"/>
+                                            <action selector="signinBtn_tapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jvj-jI-tDW"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -91,6 +91,8 @@
                     <connections>
                         <outlet property="emailTextField" destination="p39-nh-9eo" id="y9W-jp-w3a"/>
                         <outlet property="passwordTextField" destination="b7P-I7-P7F" id="kfN-Cg-IiI"/>
+                        <outlet property="signInBtn" destination="GXY-yb-SXM" id="I4Y-sm-caS"/>
+                        <segue destination="ZUM-rm-XiN" kind="presentation" identifier="signInToTabbarVc" id="zPC-3r-eL5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -184,7 +186,9 @@
                         <outlet property="emailTextField" destination="KFh-65-SlF" id="Nxe-D4-wgJ"/>
                         <outlet property="passwordTextField" destination="9oc-pT-SoW" id="IW0-s8-FZz"/>
                         <outlet property="profileImage" destination="Ooj-E4-r2x" id="s6b-bS-uSq"/>
+                        <outlet property="signUpBtn" destination="rh1-gI-Qnq" id="ptv-3c-6NU"/>
                         <outlet property="usernameTextField" destination="n6j-J1-PWo" id="q0w-br-mbV"/>
+                        <segue destination="ZUM-rm-XiN" kind="presentation" identifier="signUpToTabbarVc" id="AgY-3l-AT6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ch-lZ-LYE" sceneMemberID="firstResponder"/>
@@ -203,4 +207,7 @@
     <resources>
         <image name="placeholderImg" width="225" height="225"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="zPC-3r-eL5"/>
+    </inferredMetricsTieBreakers>
 </document>

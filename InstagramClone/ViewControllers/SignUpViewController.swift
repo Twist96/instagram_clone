@@ -10,6 +10,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signUpBtn: UIButton!
     
     var selectedImage: UIImage?
     
@@ -25,6 +26,11 @@ class SignUpViewController: UIViewController {
         decorateTextField(textField: usernameTextField)
         decorateTextField(textField: emailTextField)
         decorateTextField(textField: passwordTextField)
+        signUpBtn.isEnabled = false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     @objc func handleSelectedProfileImage() {
@@ -47,40 +53,40 @@ class SignUpViewController: UIViewController {
         bottomLayer.frame = CGRect(x: 0, y: 29, width: 1000, height: 0.6)
         bottomLayer.backgroundColor = UIColor(displayP3Red: 50/255, green: 50/255, blue: 50/255, alpha: 1).cgColor
         textField.layer.addSublayer(bottomLayer)
+        handleTextField(textField: textField)
+    }
+    
+    func handleTextField(textField: UITextField) {
+        textField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange() {
+        if let username = usernameTextField.text, !username.isEmpty,
+            let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty {
+            signUpBtn.setTitleColor(UIColor.white, for: .normal)
+            signUpBtn.isEnabled = true
+            return
+        }
+        
+        signUpBtn.setTitleColor(UIColor.gray, for: .normal)
+        signUpBtn.isEnabled = false
     }
     
     @IBAction func signUpBtn_tapped(_ sender: Any) {
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
-            if error != nil{
-                print(error!.localizedDescription)
-                return
+        ProgressHUD.show("Signing Up. . .", interaction: false)
+        view.endEditing(true)
+        if let image = selectedImage{
+            AuthService.SignUp(profileImage: image, username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) { (error) in
+                if error != nil{
+                    ProgressHUD.showError(error?.localizedDescription)
+                    return
+                }
+                ProgressHUD.showSuccess("Success")
+                self.performSegue(withIdentifier: "signUpToTabbarVc", sender: self)
             }
-            let uid = result!.user.uid
-
-            let storageRef = Storage.storage().reference().child("users_profile").child(uid)
-            if let img = self.selectedImage, let data = img.jpegData(compressionQuality: 0.1){
-                storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
-                    if error != nil{
-                        print("error saving image \( error!.localizedDescription)")
-                        return
-                    }
-                    storageRef.downloadURL(completion: { (url, error) in
-                        if error != nil{
-                            print("error get image url \(error!.localizedDescription)")
-                            return
-                        }
-                        let ref = Database.database().reference()
-                        let userReference = ref.child("user")
-                        let newUserRefernce = userReference.child(uid)
-                        newUserRefernce.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!, "profileImageUrl": url!.absoluteString])
-                    })
-                })
-            }else{
-                print("failed to pick image")
-            }
-    
         }
     }
+    
 }
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
