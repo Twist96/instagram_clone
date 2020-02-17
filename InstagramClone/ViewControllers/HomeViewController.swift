@@ -1,12 +1,29 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class HomeViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    var posts = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.dataSource = self
+        
+        loadPost()
+    }
+    
+    func loadPost() {
+        Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
+            if let dict = snapshot.value as? [String: Any]{
+                let post = Post.transformPostPhoto(dict: dict)
+                self.posts.append(post)
+                print(self.posts)
+                self.tableView.reloadData()
+            }
+        }
     }
     
 
@@ -24,4 +41,19 @@ class HomeViewController: UIViewController {
         present(vc, animated: true, completion: nil)
         
     }
+}
+
+extension HomeViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = "\(indexPath.row)"
+        cell.backgroundColor = .red
+        return cell
+    }
+    
+    
 }

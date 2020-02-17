@@ -17,7 +17,19 @@
                     <view key="view" contentMode="scaleToFill" id="3fU-wF-VCY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ztp-ji-cD2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ztp-ji-cD2" firstAttribute="trailing" secondItem="c05-kd-pJ4" secondAttribute="trailing" id="dQr-8U-uwH"/>
+                            <constraint firstItem="Ztp-ji-cD2" firstAttribute="leading" secondItem="c05-kd-pJ4" secondAttribute="leading" id="tPB-zV-U77"/>
+                            <constraint firstItem="Ztp-ji-cD2" firstAttribute="top" secondItem="3fU-wF-VCY" secondAttribute="top" id="uNO-8W-jxZ"/>
+                            <constraint firstAttribute="bottom" secondItem="Ztp-ji-cD2" secondAttribute="bottom" id="wUf-t9-Vbe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="c05-kd-pJ4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="qlQ-ir-HCg">
@@ -27,10 +39,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Ztp-ji-cD2" id="rSg-q3-qzm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2s-Jw-19p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-339" y="439"/>
+            <point key="canvasLocation" x="-339.13043478260875" y="438.61607142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C0v-C3-sPm">

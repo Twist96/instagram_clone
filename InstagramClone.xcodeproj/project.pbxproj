@@ -29,6 +29,7 @@
 		CE238D6923F4C41000B899EE /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE238D6823F4C41000B899EE /* Camera.storyboard */; };
 		CE238D6C23F4C43A00B899EE /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE238D6A23F4C43A00B899EE /* Activity.storyboard */; };
 		CE238D6E23F4C45A00B899EE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE238D6D23F4C45A00B899EE /* Profile.storyboard */; };
+		CE27253023FB38B4004346D8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27252F23FB38B4004346D8 /* Post.swift */; };
 		CE3BFF9C23F7FD460044760B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3BFF9B23F7FD460044760B /* AuthService.swift */; };
 		CE3BFFA123F818A70044760B /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE3BFF9E23F818A70044760B /* ProgressHUD.bundle */; };
 		CE3BFFA223F818A70044760B /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3BFF9F23F818A70044760B /* ProgressHUD.m */; };
@@ -86,6 +87,7 @@
 		CE238D6823F4C41000B899EE /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		CE238D6B23F4C43A00B899EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InstagramClone/Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
 		CE238D6D23F4C45A00B899EE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		CE27252F23FB38B4004346D8 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		CE3BFF9B23F7FD460044760B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		CE3BFF9D23F818A60044760B /* InstagramClone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InstagramClone-Bridging-Header.h"; sourceTree = "<group>"; };
 		CE3BFF9E23F818A70044760B /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		CE238D2523F48D6100B899EE /* InstagramClone */ = {
 			isa = PBXGroup;
 			children = (
+				CE27252E23FB389E004346D8 /* Models */,
 				CE238D6F23F54EB500B899EE /* Storyboards */,
 				CE238D7023F54ED300B899EE /* ViewControllers */,
 				CE238D2D23F48D6300B899EE /* Assets.xcassets */,
@@ -218,6 +221,14 @@
 				CE238D5823F4BA1400B899EE /* SerchViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CE27252E23FB389E004346D8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE27252F23FB38B4004346D8 /* Post.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F5DDDDDC578851F261D50B87 /* Pods */ = {
@@ -464,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE238D5523F4AC0F00B899EE /* SignUpViewController.swift in Sources */,
+				CE27253023FB38B4004346D8 /* Post.swift in Sources */,
 				CE238D2923F48D6100B899EE /* SignInViewController.swift in Sources */,
 				CE3BFFA223F818A70044760B /* ProgressHUD.m in Sources */,
 				CE238D2723F48D6100B899EE /* AppDelegate.swift in Sources */,
