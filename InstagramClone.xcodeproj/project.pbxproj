@@ -11,6 +11,7 @@
 		A88C07DE715B32406EE1C5ED /* Pods_InstagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32CD5477B1D74D3DF0E15547 /* Pods_InstagramClone.framework */; };
 		BD40C798905E374A9BE1AD86 /* Pods_InstagramCloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167EA6151DB12D5FE1B90A41 /* Pods_InstagramCloneUITests.framework */; };
 		CE06AE1923FC738B001C1299 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE06AE1823FC738B001C1299 /* HomeTableViewCell.swift */; };
+		CE06AE1B23FCA8DA001C1299 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE06AE1A23FCA8DA001C1299 /* User.swift */; };
 		CE238D2723F48D6100B899EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE238D2623F48D6100B899EE /* AppDelegate.swift */; };
 		CE238D2923F48D6100B899EE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE238D2823F48D6100B899EE /* SignInViewController.swift */; };
 		CE238D2C23F48D6100B899EE /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE238D2A23F48D6100B899EE /* Start.storyboard */; };
@@ -64,6 +65,7 @@
 		BCB299421CDE38FAD0C221EA /* Pods-InstagramClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone.debug.xcconfig"; path = "Target Support Files/Pods-InstagramClone/Pods-InstagramClone.debug.xcconfig"; sourceTree = "<group>"; };
 		C1DE571CE3016C18008843D2 /* Pods_InstagramCloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramCloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE06AE1823FC738B001C1299 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		CE06AE1A23FCA8DA001C1299 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CE238D2323F48D6100B899EE /* InstagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE238D2623F48D6100B899EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE238D2823F48D6100B899EE /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				CE27252F23FB38B4004346D8 /* Post.swift */,
+				CE06AE1A23FCA8DA001C1299 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE06AE1B23FCA8DA001C1299 /* User.swift in Sources */,
 				CE238D5523F4AC0F00B899EE /* SignUpViewController.swift in Sources */,
 				CE27253023FB38B4004346D8 /* Post.swift in Sources */,
 				CE238D2923F48D6100B899EE /* SignInViewController.swift in Sources */,

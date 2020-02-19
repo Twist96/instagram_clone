@@ -29,7 +29,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="510"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo1" translatesAutoresizingMaskIntoConstraints="NO" id="J4h-UG-1BP">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="J4h-UG-1BP">
                                                     <rect key="frame" x="15" y="15" width="36" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="36" id="6U9-Sg-qdL"/>
@@ -41,7 +41,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo2" translatesAutoresizingMaskIntoConstraints="NO" id="6K1-6i-xOw">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="6K1-6i-xOw">
                                                     <rect key="frame" x="0.0" y="59" width="414" height="325"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="325" id="jAy-QX-w4M"/>
@@ -129,9 +129,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="a1p-od-WLo">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="a1p-od-WLo" firstAttribute="centerX" secondItem="3fU-wF-VCY" secondAttribute="centerX" id="7aA-Mi-VMB"/>
+                            <constraint firstItem="a1p-od-WLo" firstAttribute="centerY" secondItem="3fU-wF-VCY" secondAttribute="centerY" id="B5b-Mt-Qy6"/>
                             <constraint firstItem="Ztp-ji-cD2" firstAttribute="trailing" secondItem="c05-kd-pJ4" secondAttribute="trailing" id="dQr-8U-uwH"/>
                             <constraint firstItem="Ztp-ji-cD2" firstAttribute="leading" secondItem="c05-kd-pJ4" secondAttribute="leading" id="tPB-zV-U77"/>
                             <constraint firstItem="Ztp-ji-cD2" firstAttribute="top" secondItem="3fU-wF-VCY" secondAttribute="top" id="uNO-8W-jxZ"/>
@@ -147,6 +152,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="a1p-od-WLo" id="Czr-oU-4yL"/>
                         <outlet property="tableView" destination="Ztp-ji-cD2" id="rSg-q3-qzm"/>
                     </connections>
                 </viewController>
@@ -180,9 +186,9 @@
         <image name="Comment" width="43" height="41"/>
         <image name="Home" width="21" height="23"/>
         <image name="Home_Selected" width="21" height="23"/>
+        <image name="Placeholder-image" width="840" height="600"/>
         <image name="like" width="46" height="41"/>
-        <image name="photo1" width="3098" height="2074"/>
-        <image name="photo2" width="3264" height="4896"/>
+        <image name="placeholderImg" width="225" height="225"/>
         <image name="share" width="37" height="41"/>
     </resources>
 </document>
