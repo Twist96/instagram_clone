@@ -36,6 +36,8 @@
 		CE3BFFA123F818A70044760B /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE3BFF9E23F818A70044760B /* ProgressHUD.bundle */; };
 		CE3BFFA223F818A70044760B /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3BFF9F23F818A70044760B /* ProgressHUD.m */; };
 		CE51C6DC23F5F3B700B382BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE51C6DB23F5F3B700B382BD /* GoogleService-Info.plist */; };
+		CEFA505923FDC38400DDFFFC /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA505823FDC38400DDFFFC /* CommentViewController.swift */; };
+		CEFA505B23FDC3DF00DDFFFC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA505A23FDC3DF00DDFFFC /* CommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,8 @@
 		CE3BFF9F23F818A70044760B /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		CE3BFFA023F818A70044760B /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		CE51C6DB23F5F3B700B382BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CEFA505823FDC38400DDFFFC /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		CEFA505A23FDC3DF00DDFFFC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		ED7B61A40967BC3733B0023D /* Pods-InstagramClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone.release.xcconfig"; path = "Target Support Files/Pods-InstagramClone/Pods-InstagramClone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				CE06AE1823FC738B001C1299 /* HomeTableViewCell.swift */,
+				CEFA505A23FDC3DF00DDFFFC /* CommentTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 				CE238D5423F4AC0F00B899EE /* SignUpViewController.swift */,
 				CE238D5623F4B9E800B899EE /* HomeViewController.swift */,
 				CE238D5823F4BA1400B899EE /* SerchViewController.swift */,
+				CEFA505823FDC38400DDFFFC /* CommentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -488,12 +494,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFA505923FDC38400DDFFFC /* CommentViewController.swift in Sources */,
 				CE06AE1B23FCA8DA001C1299 /* User.swift in Sources */,
 				CE238D5523F4AC0F00B899EE /* SignUpViewController.swift in Sources */,
 				CE27253023FB38B4004346D8 /* Post.swift in Sources */,
 				CE238D2923F48D6100B899EE /* SignInViewController.swift in Sources */,
 				CE3BFFA223F818A70044760B /* ProgressHUD.m in Sources */,
 				CE238D2723F48D6100B899EE /* AppDelegate.swift in Sources */,
+				CEFA505B23FDC3DF00DDFFFC /* CommentTableViewCell.swift in Sources */,
 				CE3BFF9C23F7FD460044760B /* AuthService.swift in Sources */,
 				CE06AE1923FC738B001C1299 /* HomeTableViewCell.swift in Sources */,
 				CE238D5723F4B9E800B899EE /* HomeViewController.swift in Sources */,

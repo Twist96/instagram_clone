@@ -20,6 +20,10 @@ class HomeViewController: UIViewController {
         loadPost()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     func loadPost() {
         activityIndicatorView.startAnimating()
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
@@ -45,7 +49,10 @@ class HomeViewController: UIViewController {
         }
     }
     
-
+    @IBAction func next_touchUpInside(_ sender: Any) {
+        performSegue(withIdentifier: "toCommentViewController", sender: nil)
+    }
+    
     @IBAction func logoutBtn_touchUpInside(_ sender: Any) {
         
         do{
