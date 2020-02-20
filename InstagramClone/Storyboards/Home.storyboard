@@ -129,14 +129,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIa-J7-Uyy">
-                                <rect key="frame" x="184" y="433" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="next_touchUpInside:" destination="jlL-el-6Ie" eventType="touchUpInside" id="6X6-LM-ggE"/>
-                                </connections>
-                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="a1p-od-WLo">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
@@ -162,7 +154,7 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="a1p-od-WLo" id="Czr-oU-4yL"/>
                         <outlet property="tableView" destination="Ztp-ji-cD2" id="rSg-q3-qzm"/>
-                        <segue destination="G6q-ha-pNf" kind="show" identifier="toCommentViewController" id="4mv-na-ww4"/>
+                        <segue destination="G6q-ha-pNf" kind="show" identifier="comment_segue" id="4mv-na-ww4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2s-Jw-19p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,8 +169,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="330-TH-QOX">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="330-TH-QOX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="comment_cell" rowHeight="74" id="oIY-0Z-1Eu" customClass="CommentTableViewCell" customModule="InstagramClone" customModuleProvider="target">
@@ -188,7 +180,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="73.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kqJ-iA-3QL">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="kqJ-iA-3QL">
                                                     <rect key="frame" x="15" y="15" width="36" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="36" id="IcE-h6-ONN"/>
@@ -212,15 +204,25 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="keo-jC-rQY" userLabel="line">
+                                                    <rect key="frame" x="51" y="72.5" width="363" height="1"/>
+                                                    <color key="backgroundColor" red="0.8862745098" green="0.89411764709999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="kJB-2O-4hr"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="keo-jC-rQY" firstAttribute="leading" secondItem="kqJ-iA-3QL" secondAttribute="trailing" id="3Gs-l8-bP7"/>
                                                 <constraint firstAttribute="bottom" secondItem="tuF-0G-DFv" secondAttribute="bottom" constant="16.5" id="7ru-CX-yzT"/>
                                                 <constraint firstItem="I5X-qj-ZXq" firstAttribute="leading" secondItem="kqJ-iA-3QL" secondAttribute="trailing" constant="8" id="8AQ-V9-jD1"/>
                                                 <constraint firstItem="I5X-qj-ZXq" firstAttribute="top" secondItem="kqJ-iA-3QL" secondAttribute="top" id="CHs-kI-hEh"/>
                                                 <constraint firstItem="tuF-0G-DFv" firstAttribute="trailing" secondItem="FOw-aZ-XfG" secondAttribute="trailingMargin" constant="8" id="RrX-A0-rps"/>
                                                 <constraint firstItem="kqJ-iA-3QL" firstAttribute="leading" secondItem="FOw-aZ-XfG" secondAttribute="leading" constant="15" id="TME-D5-xdT"/>
                                                 <constraint firstItem="tuF-0G-DFv" firstAttribute="top" secondItem="I5X-qj-ZXq" secondAttribute="bottom" constant="8" id="fBU-TY-bNs"/>
+                                                <constraint firstAttribute="bottom" secondItem="keo-jC-rQY" secondAttribute="bottom" id="fFw-Xd-BVS"/>
                                                 <constraint firstItem="kqJ-iA-3QL" firstAttribute="top" secondItem="FOw-aZ-XfG" secondAttribute="top" constant="15" id="fVV-Vh-YAx"/>
+                                                <constraint firstAttribute="trailing" secondItem="keo-jC-rQY" secondAttribute="trailing" id="iO4-X3-SdZ"/>
                                                 <constraint firstItem="tuF-0G-DFv" firstAttribute="leading" secondItem="kqJ-iA-3QL" secondAttribute="trailing" constant="8" id="kpg-dT-fsN"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -233,7 +235,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENU-5W-W7T">
-                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="846" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k9L-9q-20H">
                                         <rect key="frame" x="8" y="8" width="345" height="34"/>
@@ -254,7 +256,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="1" green="0.62789210760000003" blue="0.91328367499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="tXi-wL-72e" secondAttribute="bottom" constant="8" id="04m-Pv-qSL"/>
                                     <constraint firstItem="tXi-wL-72e" firstAttribute="top" secondItem="ENU-5W-W7T" secondAttribute="top" constant="8" id="0NE-gV-zfr"/>
@@ -275,12 +277,14 @@
                             <constraint firstItem="ENU-5W-W7T" firstAttribute="trailing" secondItem="BKl-vJ-E2r" secondAttribute="trailing" id="Tt3-W3-63G"/>
                             <constraint firstItem="ENU-5W-W7T" firstAttribute="top" secondItem="330-TH-QOX" secondAttribute="bottom" id="cev-si-YRK"/>
                             <constraint firstItem="330-TH-QOX" firstAttribute="top" secondItem="Gpf-Ii-2dM" secondAttribute="top" id="dQ8-0P-cFE"/>
-                            <constraint firstItem="ENU-5W-W7T" firstAttribute="bottom" secondItem="BKl-vJ-E2r" secondAttribute="bottom" id="pm2-FA-p6l"/>
+                            <constraint firstItem="ENU-5W-W7T" firstAttribute="bottom" secondItem="Gpf-Ii-2dM" secondAttribute="bottom" id="pm2-FA-p6l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BKl-vJ-E2r"/>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="pm2-FA-p6l" id="ZMz-0H-mnh"/>
+                        <outlet property="commenTableView" destination="330-TH-QOX" id="Jpd-r8-JM2"/>
                         <outlet property="commentTextField" destination="k9L-9q-20H" id="6FY-dS-2rS"/>
                         <outlet property="sendButton" destination="tXi-wL-72e" id="RRa-Mf-Zj4"/>
                     </connections>

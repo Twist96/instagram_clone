@@ -26,31 +26,22 @@ class HomeViewController: UIViewController {
     
     func loadPost() {
         activityIndicatorView.startAnimating()
-        Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
-            if let dict = snapshot.value as? [String: Any]{
-                let post = Post.transformPostPhoto(dict: dict)
-                self.fetchAuthor(authorId: post.authorId!, onCompleted: {
-                    self.posts.append(post)
-                    self.activityIndicatorView.stopAnimating()
-                    self.tableView.reloadData()
-                })
-            }
+        Api.post.observePosts { post in
+            self.fetchAuthor(authorId: post.authorId!, onCompleted: {
+                self.posts.append(post)
+                self.activityIndicatorView.stopAnimating()
+                self.tableView.reloadData()
+            })
         }
+
     }
     
     func fetchAuthor(authorId: String, onCompleted: @escaping () -> Void) {
-        Database.database().reference().child("user").child(authorId).observe(.value) { (snapshot) in
-            guard let dict = snapshot.value as? [String: Any] else{
-                return
-            }
-            let user = User.transformUser(dict: dict)
+       
+        Api.user.observeUser(userId: authorId) { (user) in
             self.authors.append(user)
             onCompleted()
         }
-    }
-    
-    @IBAction func next_touchUpInside(_ sender: Any) {
-        performSegue(withIdentifier: "toCommentViewController", sender: nil)
     }
     
     @IBAction func logoutBtn_touchUpInside(_ sender: Any) {
@@ -67,6 +58,13 @@ class HomeViewController: UIViewController {
         present(vc, animated: true, completion: nil)
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "comment_segue"{
+            let vc = segue.destination as! CommentViewController
+            vc.postId = sender as? String
+        }
+    }
 }
 
 extension HomeViewController: UITableViewDataSource{
@@ -78,9 +76,8 @@ extension HomeViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "post_cell") as! HomeTableViewCell
         cell.post = posts[indexPath.row]
         cell.author = authors[indexPath.row]
+        cell.homeVC = self
         return cell
     }
-    
-    
     
 }
