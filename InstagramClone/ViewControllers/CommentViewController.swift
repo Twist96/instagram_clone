@@ -59,13 +59,18 @@ class CommentViewController: UIViewController {
     }
     
     func loadCommet() {
-        let postRefernce = Database.database().reference().child("post-comments").child(postId!)
-        postRefernce.observe(.childAdded) { (snapshot) in
-           
-            Api.comment.observeComment(commentId: snapshot.key, onComplete: { (comment) in
+        
+        Api.post_comments.observeComment(postId: postId!) { (commentId) in
+            Api.comment.observeComment(commentId: commentId, onComplete: { (comment) in
                 self.comments.append(comment)
                 self.getAuthorsInfo(authorId: comment.authorId!)
             });
+        }
+        
+        let postRefernce = Database.database().reference().child("post-comments").child(postId!)
+        postRefernce.observe(.childAdded) { (snapshot) in
+           
+            
         }
     }
     
