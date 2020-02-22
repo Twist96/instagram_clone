@@ -33,8 +33,17 @@ class HomeTableViewCell: UITableViewCell {
         if let photoUrl = post?.photoUrl{
             postImageView.sd_setImage(with: URL(string: photoUrl), completed: nil)
         }
+        
+        Api.post.REF_POST.child(post!.id!).observeSingleEvent(of: .value) { (snapshot) in
+            let post = Post.transformPostPhoto(postId: snapshot.key, dict: snapshot.value! as! [String : Any])
+            self.updateLike(post: post)
+        }
+        
         Api.post.REF_POST.child(post!.id!).observe(.childChanged) { (snapshot) in
-            self.updateLike(post: self.post!)
+            //self.updateLike(post: self.post!)
+            if let value = snapshot.value as? Int{
+                self.likesNumberCount.setTitle("\(value) likes", for: .normal)
+            }
         }
     }
     
@@ -46,9 +55,9 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func updateLike(post: Post) {
-        if let imageName = post.likes == nil || !post.isLiked! ? "like" : "likeSelected"{
-           likeImageView.image = UIImage(named: imageName)
-        }
+        let imageName = post.likes == nil || !post.isLiked! ? "like" : "likeSelected"
+        likeImageView.image = UIImage(named: imageName)
+        
         
         if let count = post.likesCount, count != 0 {
             likesNumberCount.setTitle("\(count) likes", for: .normal)
