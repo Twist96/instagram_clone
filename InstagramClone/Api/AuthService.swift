@@ -17,7 +17,6 @@ class AuthService {
     static func SignIn(email: String, password: String, onComplete: @escaping (_ error: Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil{
-                print("failed signin: \(error!.localizedDescription)")
                 onComplete(error)
                 return
             }
@@ -28,7 +27,6 @@ class AuthService {
     static func SignUp(profileImage: UIImage, username: String, email: String, password: String, onComplete: @escaping (_ error: Error?) -> Void){
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if error != nil{
-                print(error!.localizedDescription)
                 onComplete(error)
                 return
             }
@@ -38,19 +36,16 @@ class AuthService {
             if let data = profileImage.jpegData(compressionQuality: 0.1){
                 storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
                     if error != nil{
-                        print("error saving image \( error!.localizedDescription)")
                         return
                     }
                     storageRef.downloadURL(completion: { (url, error) in
                         if error != nil{
-                            print("error get image url \(error!.localizedDescription)")
                             return
                         }
                         self.setUserInformation(username: username, email: email, imageUrl: url!.absoluteString, uid: uid, onComplete: onComplete)
                     })
                 })
             }else{
-                print("failed to convert UIimage to jpeg")
             }
             
         }

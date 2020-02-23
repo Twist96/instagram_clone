@@ -41,7 +41,6 @@ class CommentViewController: UIViewController {
     @objc func keyboardWillShow(_ notification: NSNotification){
         let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
         UIView.animate(withDuration: 0.3) {
-            print(keyboardFrame!.height)
             self.bottomConstraint.constant = keyboardFrame!.height * -1
             self.view.layoutIfNeeded()
         }

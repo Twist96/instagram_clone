@@ -13,5 +13,6 @@ class Api {
     static let user = UserApi()
     static let comment = CommentApi()
     static let post_comments = Post_CommentApi()
+    static let MyPosts = MyPostApi()
     //static let post_comment
 }

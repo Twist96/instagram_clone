@@ -119,7 +119,6 @@ class HomeTableViewCell: UITableViewCell {
             return TransactionResult.success(withValue: currentData)
         }) { (error, commited, snapshot) in
             if let error = error{
-                print(error.localizedDescription)
             }
             let post = Post.transformPostPhoto(postId: snapshot!.key, dict: snapshot!.value! as! [String : Any])
             self.updateLike(post: post)

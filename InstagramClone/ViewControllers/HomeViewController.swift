@@ -49,7 +49,6 @@ class HomeViewController: UIViewController {
         do{
             try Auth.auth().signOut()
         }catch{
-            print("failed logout: \(error.localizedDescription)")
             return
         }
         
