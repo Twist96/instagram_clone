@@ -1,7 +1,5 @@
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 
 class CommentViewController: UIViewController {
     
@@ -65,19 +63,10 @@ class CommentViewController: UIViewController {
                 self.getAuthorsInfo(authorId: comment.authorId!)
             });
         }
-        
-        let postRefernce = Database.database().reference().child("post-comments").child(postId!)
-        postRefernce.observe(.childAdded) { (snapshot) in
-           
-            
-        }
     }
     
     func getAuthorsInfo(authorId: String) {
-       let userRefernce = Database.database().reference().child("user").child(authorId)
-        userRefernce.observe(.value) { (snapshot) in
-            let dict = snapshot.value as? [String: Any]
-            let user = User.transformUser(dict: dict!)
+        Api.user.observeUser(userId: authorId) { (user) in
             self.authors.append(user)
             self.commenTableView.reloadData()
         }
@@ -99,24 +88,20 @@ class CommentViewController: UIViewController {
     
     @IBAction func sendBtn_touchUpInside(_ sender: Any) {
         
-        let ref = Database.database().reference()
-        let commentRefernce = ref.child("comments")
+        let commentRefernce = Api.comment.REF_COMMENTS
         let newCommentId = commentRefernce.childByAutoId().key
         let newCommentRefernce = commentRefernce.child(newCommentId!)
-        guard let currentUser = Auth.auth().currentUser else{
+        guard let currentUser = Api.user.CURRENT_USER else{
             return
         }
         
         let userId = currentUser.uid
         newCommentRefernce.setValue(["authorId": userId, "commentText": self.commentTextField.text!]) { (error, dbReference) in
-            
             if error != nil{
                 ProgressHUD.showError(error?.localizedDescription)
                 return
             }
-            // add comment to post
-            let postRefernce = Database.database().reference().child("post-comments").child(self.postId!).child(newCommentId!)
-            postRefernce.setValue(true, withCompletionBlock: { (error, dbRefence) in
+            Api.post_comments.andCommentId(postId: self.postId!, commnetId: newCommentId!, onComplete: { (error) in
                 if error != nil{
                     ProgressHUD.showError(error?.localizedDescription)
                     return

@@ -1,7 +1,5 @@
 
 import UIKit
-import FirebaseDatabase
-import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
@@ -20,12 +18,13 @@ class ProfileViewController: UIViewController {
     func fetchUserProfile() {
         Api.user.observeCurrentUser { (user) in
             self.user = user
+            self.title = user.username
             self.profileCollectionView.reloadData()
         }
     }
     
     func fetchUserPosts() {
-        guard let currentUser = Auth.auth().currentUser  else {
+        guard let currentUser = Api.user.CURRENT_USER  else {
             return
         }
         Api.MyPosts.REF_MY_POST.child(currentUser.uid).observe(.childAdded) { (snapshot) in

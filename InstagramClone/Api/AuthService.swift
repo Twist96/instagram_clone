@@ -24,6 +24,15 @@ class AuthService {
         }
     }
     
+    static func SignOut(onCompletion: (_ error: Error?) -> Void){
+        do{
+            try Auth.auth().signOut()
+            onCompletion(nil)
+        }catch let logoutError{
+            onCompletion(logoutError)
+        }
+    }
+    
     static func SignUp(profileImage: UIImage, username: String, email: String, password: String, onComplete: @escaping (_ error: Error?) -> Void){
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if error != nil{

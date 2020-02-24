@@ -186,7 +186,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LhX-uM-Z4b"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="Fxr-sP-lzg"/>
+                    <navigationItem key="navigationItem" title="Profile" id="Fxr-sP-lzg">
+                        <barButtonItem key="leftBarButtonItem" image="discover" id="kBB-wp-UOh">
+                            <connections>
+                                <segue destination="dld-2Y-stv" kind="show" id="avF-f2-edF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="profileCollectionView" destination="mOj-k5-5Fa" id="W2g-RZ-JTX"/>
                     </connections>
@@ -194,6 +200,89 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rfq-dk-AqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3330.4000000000001" y="438.17733990147786"/>
+        </scene>
+        <!--Discover View Controller-->
+        <scene sceneID="kdu-KA-r11">
+            <objects>
+                <viewController id="dld-2Y-stv" customClass="DiscoverViewController" customModule="InstagramClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5AR-l9-Uc1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Axe-os-CpU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiscoverTableViewCell" rowHeight="91" id="H1w-uR-7Mp" customClass="DiscoverTableViewCell" customModule="InstagramClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="91"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H1w-uR-7Mp" id="WWx-yh-bM9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90.666666666666671"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oS0-OS-9fo">
+                                                    <rect key="frame" x="15" y="15" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="Qd4-My-ZUJ"/>
+                                                        <constraint firstAttribute="height" constant="60" id="cjh-E4-Kdo"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.conerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="My4-vG-Az3">
+                                                    <rect key="frame" x="260" y="31" width="100" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="qed-4a-gjI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    <state key="normal" title="Follow"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdB-pV-Oiq">
+                                                    <rect key="frame" x="83" y="36.666666666666664" width="157" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="My4-vG-Az3" firstAttribute="leading" secondItem="xdB-pV-Oiq" secondAttribute="trailing" constant="20" id="Bgq-Nh-55u"/>
+                                                <constraint firstItem="oS0-OS-9fo" firstAttribute="top" secondItem="WWx-yh-bM9" secondAttribute="top" constant="15" id="QyS-Vq-HLh"/>
+                                                <constraint firstAttribute="trailing" secondItem="My4-vG-Az3" secondAttribute="trailing" constant="15" id="ZvW-hU-NCd"/>
+                                                <constraint firstItem="oS0-OS-9fo" firstAttribute="centerY" secondItem="WWx-yh-bM9" secondAttribute="centerY" id="de0-BD-bqw"/>
+                                                <constraint firstItem="xdB-pV-Oiq" firstAttribute="leading" secondItem="oS0-OS-9fo" secondAttribute="trailing" constant="8" id="jcn-gA-act"/>
+                                                <constraint firstAttribute="bottom" secondItem="oS0-OS-9fo" secondAttribute="bottom" constant="15" id="lvV-We-Ug7"/>
+                                                <constraint firstItem="My4-vG-Az3" firstAttribute="centerY" secondItem="oS0-OS-9fo" secondAttribute="centerY" id="mA9-Vs-re8"/>
+                                                <constraint firstItem="xdB-pV-Oiq" firstAttribute="centerY" secondItem="oS0-OS-9fo" secondAttribute="centerY" id="my2-tr-odM"/>
+                                                <constraint firstItem="oS0-OS-9fo" firstAttribute="leading" secondItem="WWx-yh-bM9" secondAttribute="leading" constant="15" id="zPf-EU-dOZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="profileImageView" destination="oS0-OS-9fo" id="yTH-qN-BBR"/>
+                                            <outlet property="usernameLabel" destination="xdB-pV-Oiq" id="daL-f9-wya"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Axe-os-CpU" firstAttribute="trailing" secondItem="pbO-gT-0lz" secondAttribute="trailing" id="MTE-mF-wat"/>
+                            <constraint firstAttribute="bottom" secondItem="Axe-os-CpU" secondAttribute="bottom" id="gVh-Wx-Cw4"/>
+                            <constraint firstItem="Axe-os-CpU" firstAttribute="top" secondItem="5AR-l9-Uc1" secondAttribute="top" id="lbD-M2-pfx"/>
+                            <constraint firstItem="Axe-os-CpU" firstAttribute="leading" secondItem="pbO-gT-0lz" secondAttribute="leading" id="taz-yk-WZb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pbO-gT-0lz"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Axe-os-CpU" id="hXX-zA-mhH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dnm-TY-a7Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4173.6000000000004" y="437.4384236453202"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="e04-hv-3uP">
@@ -220,5 +309,6 @@
     <resources>
         <image name="Profile" width="20" height="21"/>
         <image name="Profile_Selected" width="20" height="21"/>
+        <image name="discover" width="22" height="22"/>
     </resources>
 </document>

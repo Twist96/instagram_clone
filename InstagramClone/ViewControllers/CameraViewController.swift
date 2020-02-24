@@ -1,8 +1,5 @@
 
 import UIKit
-import FirebaseStorage
-import FirebaseDatabase
-import FirebaseAuth
 
 class CameraViewController: UIViewController {
     @IBOutlet weak var photo: UIImageView!
@@ -53,47 +50,15 @@ class CameraViewController: UIViewController {
     @IBAction func shareBtn_touchUpInside(_ sender: Any) {
         if let img = selectedPhoto, let imageData = img.jpegData(compressionQuality: 0.3){
             ProgressHUD.show("Uploading post")
-            let photoIdString = NSUUID().uuidString
-            let storageRef = Storage.storage().reference().child("posts").child(photoIdString)
-            storageRef.putData(imageData, metadata: nil) { (metaData, error) in
+            HelperClass.UploadPost(imageData: imageData, caption: captionTextView.text!) { (error) in
                 if error != nil{
                     ProgressHUD.showError(error?.localizedDescription)
                     return
                 }
-                storageRef.downloadURL(completion: { (url, error) in
-                    if error != nil{
-                        ProgressHUD.showError(error?.localizedDescription)
-                        return
-                    }
-                    self.saveDataToDatabase(photoUrl: url!.description)
-                })
+                ProgressHUD.showSuccess()
+                self.clearViews()
+                self.tabBarController?.selectedIndex = 0
             }
-        }
-    }
-    
-    func saveDataToDatabase(photoUrl: String) {
-        let ref = Database.database().reference()
-        let postRef = ref.child("posts")
-        let newPostId = postRef.childByAutoId().key!
-        let newPostReference = postRef.child(newPostId)
-        guard let uid = Auth.auth().currentUser?.uid  else {
-            return
-        }
-        newPostReference.setValue(["authorId": uid, "photoUrl": photoUrl, "caption": captionTextView.text!]) { (error, dbRef) in
-            if error != nil{
-                ProgressHUD.showError(error?.localizedDescription)
-                return
-            }
-            let myPostRef = Api.MyPosts.REF_MY_POST.child(uid).child(newPostId)
-            myPostRef.setValue(true, withCompletionBlock: { (error, dbRef) in
-                if error != nil{
-                    ProgressHUD.showError(error?.localizedDescription)
-                    return
-                }
-            })
-            ProgressHUD.showSuccess()
-            self.clearViews()
-            self.tabBarController?.selectedIndex = 0
         }
     }
     

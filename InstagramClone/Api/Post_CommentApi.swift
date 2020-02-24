@@ -17,4 +17,13 @@ class Post_CommentApi {
             onComplete(snapshot.key)
         }
     }
+
+    func andCommentId(postId: String, commnetId: String, onComplete: @escaping (_ error: Error?) -> Void) {
+        REF_COMMENTS.child(postId).child(commnetId).setValue(true, withCompletionBlock: { (error, dbRefence) in
+            if error != nil{
+                onComplete(error)
+            }
+            onComplete(nil)
+        })
+    }
 }

@@ -1,7 +1,5 @@
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 import SDWebImage
 
 class HomeViewController: UIViewController {
@@ -46,16 +44,15 @@ class HomeViewController: UIViewController {
     
     @IBAction func logoutBtn_touchUpInside(_ sender: Any) {
         
-        do{
-            try Auth.auth().signOut()
-        }catch{
-            return
-        }
-        
-        let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-        present(vc, animated: true, completion: nil)
-        
+        AuthService.SignOut { (error) in
+            if error != nil{
+                ProgressHUD.showError(error?.localizedDescription)
+                return
+            }
+            let storyboard = UIStoryboard(name: "Start", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+            present(vc, animated: true, completion: nil)
+        } 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
