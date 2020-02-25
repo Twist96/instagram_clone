@@ -9,14 +9,17 @@
 import Foundation
 
 class User {
+    var id: String?
     var email: String?
     var username: String?
     var profileImageUrl: String?
+    var isFollowing: Bool?
 }
 
 extension User{
-    static func transformUser(dict: [String: Any]) -> User{
+    static func transformUser(uid: String, dict: [String: Any]) -> User{
         let user = User()
+        user.id = uid
         user.email = dict["email"] as? String
         user.username = dict["username"] as? String
         user.profileImageUrl = dict["profileImageUrl"] as? String

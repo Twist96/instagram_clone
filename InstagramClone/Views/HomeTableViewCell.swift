@@ -32,13 +32,7 @@ class HomeTableViewCell: UITableViewCell {
             postImageView.sd_setImage(with: URL(string: photoUrl), completed: nil)
         }
         
-        Api.post.observePost(withId: post!.id!) { (post) in
-            self.updateLike(post: post)
-        }
-        
-        Api.post.observeLikeCount(postId: post!.id!) { (likes) in
-            self.likesNumberCount.setTitle("\(likes) likes", for: .normal)
-        }
+        self.updateLike(post: post!)
     }
     
     func updateAuthorsDetails() {
@@ -92,6 +86,9 @@ class HomeTableViewCell: UITableViewCell {
                 ProgressHUD.showError(error?.localizedDescription)
                 return
             }
+            self.post?.likes = post?.likes
+            self.post?.isLiked = post?.isLiked
+            self.post?.likesCount = post?.likesCount
             self.updateLike(post: post!)
         }
         //increamentLikes(forRef: postRef!)

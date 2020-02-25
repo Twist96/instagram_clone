@@ -14,5 +14,6 @@ class Api {
     static let comment = CommentApi()
     static let post_comments = Post_CommentApi()
     static let MyPosts = MyPostApi()
+    static let Follow = FollowApi()
     //static let post_comment
 }

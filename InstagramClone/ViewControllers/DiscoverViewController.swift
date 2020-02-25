@@ -17,8 +17,11 @@ class DiscoverViewController: UIViewController {
     
     func loadUsers(){
         Api.user.observeUsers { (user) in
-            self.users.append(user)
-            self.tableView.reloadData()
+            Api.Follow.isFollowing(userId: user.id!, onComplete: { (value) in
+                user.isFollowing = value
+                self.users.append(user)
+                self.tableView.reloadData()
+            })
         }
     }
 

@@ -260,6 +260,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="followButton" destination="My4-vG-Az3" id="zbs-hD-1Kj"/>
                                             <outlet property="profileImageView" destination="oS0-OS-9fo" id="yTH-qN-BBR"/>
                                             <outlet property="usernameLabel" destination="xdB-pV-Oiq" id="daL-f9-wya"/>
                                         </connections>
