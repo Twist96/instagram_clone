@@ -46,6 +46,7 @@
 		CE46A0352402E08700D0D66D /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46A0342402E08700D0D66D /* PhotoCollectionViewCell.swift */; };
 		CE46A0372403032500D0D66D /* HelperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46A0362403032500D0D66D /* HelperClass.swift */; };
 		CE51C6DC23F5F3B700B382BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE51C6DB23F5F3B700B382BD /* GoogleService-Info.plist */; };
+		CE6182FE24087269006205F9 /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6182FD24087269006205F9 /* FeedApi.swift */; };
 		CE65F01F240474EB00F134E6 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65F01E240474EB00F134E6 /* DiscoverViewController.swift */; };
 		CE65F0212404760B00F134E6 /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65F0202404760B00F134E6 /* DiscoverTableViewCell.swift */; };
 		CEFA505923FDC38400DDFFFC /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA505823FDC38400DDFFFC /* CommentViewController.swift */; };
@@ -123,6 +124,7 @@
 		CE46A0342402E08700D0D66D /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE46A0362403032500D0D66D /* HelperClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperClass.swift; sourceTree = "<group>"; };
 		CE51C6DB23F5F3B700B382BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE6182FD24087269006205F9 /* FeedApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
 		CE65F01E240474EB00F134E6 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		CE65F0202404760B00F134E6 /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
 		CEFA505823FDC38400DDFFFC /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				CE46A0322402BE6500D0D66D /* MyPostApi.swift */,
 				CE46A0362403032500D0D66D /* HelperClass.swift */,
 				CE202CB52405B5C500B8550F /* FollowApi.swift */,
+				CE6182FD24087269006205F9 /* FeedApi.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				CE46A0332402BE6500D0D66D /* MyPostApi.swift in Sources */,
 				CE65F01F240474EB00F134E6 /* DiscoverViewController.swift in Sources */,
 				CE238D5523F4AC0F00B899EE /* SignUpViewController.swift in Sources */,
+				CE6182FE24087269006205F9 /* FeedApi.swift in Sources */,
 				CE46A0372403032500D0D66D /* HelperClass.swift in Sources */,
 				CE27253023FB38B4004346D8 /* Post.swift in Sources */,
 				CE238D2923F48D6100B899EE /* SignInViewController.swift in Sources */,

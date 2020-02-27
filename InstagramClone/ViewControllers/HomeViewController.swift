@@ -24,13 +24,27 @@ class HomeViewController: UIViewController {
     
     func loadPost() {
         activityIndicatorView.startAnimating()
-        Api.post.observePosts { post in
+        Api.Feed.observeFeeds(withid: Api.user.CURRENT_USER!.uid) { (post) in
             self.fetchAuthor(authorId: post.authorId!, onCompleted: {
                 self.posts.append(post)
                 self.activityIndicatorView.stopAnimating()
                 self.tableView.reloadData()
             })
         }
+        
+        Api.Feed.observeRemoveFeeds(withid: Api.user.CURRENT_USER!.uid) { (key) in
+            self.posts = self.posts.filter{$0.id != key}
+            self.tableView.reloadData()
+        }
+        
+//        activityIndicatorView.startAnimating()
+//        Api.post.observePosts { post in
+//            self.fetchAuthor(authorId: post.authorId!, onCompleted: {
+//                self.posts.append(post)
+//                self.activityIndicatorView.stopAnimating()
+//                self.tableView.reloadData()
+//            })
+//        }
 
     }
     

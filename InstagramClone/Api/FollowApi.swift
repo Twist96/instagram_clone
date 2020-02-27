@@ -24,6 +24,13 @@ class FollowApi {
     }
     
     func isFollowing(userId: String, onComplete: @escaping (Bool) -> Void) {
+        Api.MyPosts.REF_MY_POST.child(userId).observeSingleEvent(of: .value) { (snapshot) in
+            if let dict = snapshot.value as? [String: Any]{
+                for key in dict.keys{
+                    Database.database().reference().child("feed").child(Api.user.CURRENT_USER!.uid).child(key).removeValue()
+                }
+            }
+        }
         REF_FOLLOWERS.child(userId).child(Api.user.CURRENT_USER!.uid).observeSingleEvent(of: .value) { (snapshot) in
             if let _ = snapshot.value as? NSNull{
                 onComplete(false)

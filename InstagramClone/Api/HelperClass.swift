@@ -40,7 +40,7 @@ class HelperClass {
                 onCompletion(error)
             }
             
-            Database.database().reference().child("feed").child(Api.user.CURRENT_USER!.uid).child(newPostId).setValue(true)
+            Api.Feed.REF_POST.child(Api.user.CURRENT_USER!.uid).child(newPostId).setValue(true)
             
             let myPostRef = Api.MyPosts.REF_MY_POST.child(uid).child(newPostId)
             myPostRef.setValue(true, withCompletionBlock: { (error, dbRef) in
